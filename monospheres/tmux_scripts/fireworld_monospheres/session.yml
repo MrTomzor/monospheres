@@ -27,6 +27,7 @@ windows:
       panes:
         - waitForGazebo; rosrun dynamic_reconfigure dynparam set gazebo max_update_rate 250 # realtime factor 1.0
         # - waitForGazebo; rosrun dynamic_reconfigure dynparam set gazebo max_update_rate 50 #  realtime factor 0.2
+  - hw_api:
       layout: tiled
       panes:
         - waitForTime; roslaunch mrs_uav_px4_api api.launch
