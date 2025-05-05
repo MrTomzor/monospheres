@@ -1,15 +1,19 @@
 # monospheres
 This is the directory containing code for the Monospheres mapping and exploration pipeline, along with a custom version of the OpenVINS package modified for compatibility with the MRS system.
-To run the MonoSpheres method example, run `monospheres/tmux_scripts/fireworld_monospheres/tmux.sh`.
-To run the OctoMap mapper and random explorer approach used as baseline in the paper, run `monospheres/tmux_scripts/fireworld_monospheres/tmux.sh`.
+To run the MonoSpheres method example, run `monospheres/tmux_scripts/fireworld_monospheres/tmux.sh`. To run the OctoMap mapper and random explorer approach used as baseline in the paper, run `monospheres/tmux_scripts/fireworld_monospheres/tmux.sh`. The cave world is currently unavailable in this file submission, as the textures and models are too large to fit into the RA-L 50MB submission size along with the video, but all of the functionality can be seen in the fireworld environment which uses native Gazebo assets.
 
-To run both of these scripts, it is first needed to install the MRS sytem and build the packages in this repository. Please follow these instructions for installation:
+To run both of these scripts, it is neccessary to first install the MRS sytem and build the packages in this repository. Please follow these instructions for installation:
 
 1) Install ROS and the MRS UAV system as per the instructions at https://ctu-mrs.github.io/docs/installation/. We recommend to install natively (this requires Ubuntu 20.04), as the code has been tested only on computers with a native installation, but the apptainer variant should work as well (but all of the following instructions must be made in the apptainer in that case).
-2) Create a ROS workspace (if it was not created by the MRS system installation already), add the packages contained in this repository (both the monospheres/ and dependecies/ folders) into your workspace's `src/` folder, build the workspace using `catkin_build` and source the workspace.
-4) Install the required python packages for the monospheres package using the `./create_python_env.sh` script in the monospheres package.
-5) Run `monospheres/tmux_scripts/fireworld_monospheres/tmux.sh`. This will launch a tmux session using the tmux config of the MRS system. If you want to use your own config or the default tmux keybindings, just comment out the line `tmux_options: -f /etc/ctu-mrs/tmux.conf` in `session.yaml`. Otherwise, the MRS system TMUX keybinds are available at https://github.com/ctu-mrs/mrs_cheatsheet?tab=readme-ov-file ).
+2) Create a ROS workspace (if it was not created by the MRS system installation already), add the packages contained in this repository (both the`monospheres/` and `dependecies/` folders) into your workspace's `src/` folder, build the workspace using `catkin_build` and source the workspace by running `source your_workspace_path/devel/setup.bash`
+3) Update pip by running `python3 -m pip install --upgrade pip`. Without this, some python packages in the following step might not be found (especially open3d==0.18.0)
+4) Create a python virtual environment with the required python packages for the monospheres package using the `./create_python_env.sh` script in the monospheres package.
+5) Run `monospheres/tmux_scripts/fireworld_monospheres/tmux.sh`. This will launch a tmux session using the tmux config of the MRS system. If you want to use your own config or the default tmux keybindings, you can delete the line `tmux_options: -f /etc/ctu-mrs/tmux.conf` in `session.yaml`. Otherwise, you will be able to navigate the session using the MRS system tmux keybinds available at https://github.com/ctu-mrs/mrs_cheatsheet?tab=readme-ov-file ).
+
+After launching the tmux session, you should see a Gazebo simulation window pop up and a drone should be spawned. Then, after the automatic takeoff, an RVIZ window should open, showing the OpenVINS debug image and the 3D map constructed by MonoSpheres. The `start_maneuver` tab will send a command for the UAV to go 5m forward after takeoff and start the automatic exploration. You can also control the UAV manually by moving to the `status` tmux tab, pressing `Ctrl+R` to switch to the remote mode and the use w,a,s,d,q,e,r,f.  (see https://ctu-mrs.github.io/docs/features/status_tui/ for details).
 
 
 ## Troubleshooting
-- If the UAV does not spawn at all, and  
+- Drone is not spawning - This can be a problem with the jinja2 python package. The version should be 2.1.3, which can be installed by `pip install jinja2==2.1.3`. If this does not help, also update the markupsafe package to the following version: `pip install markupsafe==2.1.3`.
+- Drone is spawned but not taking off - This can happen if a tmux session was not closed properly and a px4 daemon (simulating flight controller behavior) is not destroyed. This can be fixed by running `killall px4`.
+- Drone has taken off
