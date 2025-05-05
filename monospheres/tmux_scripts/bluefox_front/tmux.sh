@@ -51,7 +51,7 @@ input=(
 '
   # 'Mins' 'waitForHw; roslaunch mrs_mins_core realworld_bluefox_front.launch
 # '
-  'Navigation' 'waitForControl; roslaunch spatial_ai mrs_openvins_explore_real.launch
+  'Navigation' 'waitForControl; roslaunch monospheres mrs_openvins_explore_real.launch
 '
   'StartExploring' 'rosservice call uav25/navigation/setstate_exploring'
   'AutoStart' 'waitForHw; roslaunch mrs_uav_autostart automatic_start.launch

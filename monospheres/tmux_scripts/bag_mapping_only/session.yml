@@ -14,11 +14,11 @@ windows:
   - navigation:
       layout: tiled
       panes:
-        - waitForRos; roslaunch spatial_ai mrs_openvins_explore.launch
+        - waitForRos; roslaunch monospheres mrs_openvins_explore.launch
   - rviz:
       layout: tiled
       panes:
-        - waitForRos; roslaunch spatial_ai rviz.launch
+        - waitForRos; roslaunch monospheres rviz.launch
   - layout:
       layout: tiled
       panes:

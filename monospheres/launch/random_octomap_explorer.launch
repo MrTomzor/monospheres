@@ -5,6 +5,6 @@
     <rosparam if="$(eval not arg('custom_config') == '')" file="$(arg custom_config)" />
 
     <!-- Run ov_extension.py node -->
-    <node pkg="spatial_ai" type="random_octomap_explorer.py" name="random_octomap_explorer" output="screen"/>
+    <node pkg="monospheres" type="random_octomap_explorer.py" name="random_octomap_explorer" output="screen"/>
 
 </launch>

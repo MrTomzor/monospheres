@@ -20,7 +20,7 @@ windows:
       panes:
         # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_name:=forest gui:=true
         # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_name:=grass_plane gui:=true
-        - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/fireworld1.sdf gui:=true
+        - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find monospheres`/worlds/fireworld1.sdf gui:=true
         - waitForOdometry; gz camera -c gzclient_camera -f uav1; history -s gz camera -c gzclient_camera -f uav1
 
   - hw_api:
@@ -34,11 +34,11 @@ windows:
   - navigation:
       layout: tiled
       panes:
-        - waitForOffboard; sleep 15; roslaunch spatial_ai mrs_openvins_explore.launch custom_config:=./custom_configs/exploration_area_config.yaml
+        - waitForOffboard; sleep 15; roslaunch monospheres mrs_openvins_explore.launch custom_config:=./custom_configs/exploration_area_config.yaml
   - octomap_pcl_retransform:
       layout: tiled
       panes:
-        - waitForHw; rosrun spatial_ai pointcloud_transformer.py
+        - waitForHw; rosrun monospheres pointcloud_transformer.py
   - exploration_start:
       layout: tiled
       panes:
@@ -46,7 +46,7 @@ windows:
   - start_maneuver:
       layout: tiled
       panes:
-        - waitForOffboard; sleep 22; rosrun spatial_ai goforward5m.sh
+        - waitForOffboard; sleep 22; rosrun monospheres goforward5m.sh
   - VINS:
       layout: tiled
       panes:
@@ -80,7 +80,7 @@ windows:
   - rviz:
       layout: tiled
       panes:
-        - waitForControlNoOdom; roslaunch spatial_ai rviz.launch
+        - waitForControlNoOdom; roslaunch monospheres rviz.launch
   - easy_control:
       layout: tiled
       panes:

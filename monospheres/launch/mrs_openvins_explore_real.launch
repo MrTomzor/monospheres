@@ -4,8 +4,8 @@
 
     <!-- Run ov_extension.py node -->
     <group ns="$(arg UAV_NAME)">
-    <rosparam command="load" file="$(find spatial_ai)/config/mrs_real.yaml"/>
-    <node pkg="spatial_ai" type="ov_extension.py" name="mono_exploration" output="screen" launch-prefix="nice -n 10"/>
+    <rosparam command="load" file="$(find monospheres)/config/mrs_real.yaml"/>
+    <node pkg="monospheres" type="ov_extension.py" name="mono_exploration" output="screen" launch-prefix="nice -n 10"/>
     </group>
 
 </launch>

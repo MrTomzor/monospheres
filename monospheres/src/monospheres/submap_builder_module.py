@@ -99,7 +99,7 @@ class SubmapBuilderModule:
         self.mchunk = CoherentSpatialMemoryChunk()
 
         # self.testing_mchunk_filename = rospy.get_param("global_nav/testing_mchunk_filename")
-        # mchunk_filepath = rospkg.RosPack().get_path('spatial_ai') + "/memories/" + self.testing_mchunk_filename
+        # mchunk_filepath = rospkg.RosPack().get_path('monospheres') + "/memories/" + self.testing_mchunk_filename
         # self.mchunk = CoherentSpatialMemoryChunk.load(mchunk_filepath)
 
         self.keyframes = []
@@ -1110,7 +1110,7 @@ class SubmapBuilderModule:
         # with ScopedLock(self.spheremap_mutex):
         print("SAVING EPISODE MEMORY CHUNK")
 
-        fpath = rospkg.RosPack().get_path('spatial_ai') + "/memories/last_episode.pickle"
+        fpath = rospkg.RosPack().get_path('monospheres') + "/memories/last_episode.pickle"
         self.mchunk.submaps.append(self.spheremap)
         self.mchunk.save(fpath)
         self.mchunk.submaps.pop()

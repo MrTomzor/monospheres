@@ -109,7 +109,7 @@
           <geometry>
             <mesh>
               <scale>4 4 2</scale>
-              <uri>model://spatial_ai/meshes/inspection_world.dae</uri>
+              <uri>model://monospheres/meshes/inspection_world.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -131,7 +131,7 @@
           <geometry>
             <mesh>
               <scale>4 4 2</scale>
-              <uri>model://spatial_ai/meshes/inspection_world.dae</uri>
+              <uri>model://monospheres/meshes/inspection_world.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -140,7 +140,7 @@
           <geometry>
             <mesh>
               <scale>4 4 2</scale>
-              <uri>model://spatial_ai/meshes/inspection_water.dae</uri>
+              <uri>model://monospheres/meshes/inspection_water.dae</uri>
             </mesh>
           </geometry>
         </visual>
