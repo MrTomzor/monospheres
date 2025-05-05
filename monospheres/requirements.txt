@@ -1,0 +1,14 @@
+rospy
+rospkg
+shapely
+trimesh==3.23.5
+opencv-python
+tf2-utilities
+tf2-geometry-msgs
+scikit-learn
+matplotlib
+sensor_msgs
+tf2_ros
+netifaces
+pyembree==0.2.11
+open3d
