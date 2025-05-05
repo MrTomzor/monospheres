@@ -25,8 +25,8 @@ windows:
   - sim_slowdown:
       layout: tiled
       panes:
-        - waitForGazebo; rosrun dynamic_reconfigure dynparam set gazebo max_update_rate 250 # realtime factor 1.0
-        # - waitForGazebo; rosrun dynamic_reconfigure dynparam set gazebo max_update_rate 50 #  realtime factor 0.2
+        - waitForGazebo; sleep 3; rosrun dynamic_reconfigure dynparam set gazebo max_update_rate 250 # realtime factor 1.0
+        # - waitForGazebo; sleep 3; rosrun dynamic_reconfigure dynparam set gazebo max_update_rate 50 #  realtime factor 0.2
   - hw_api:
       layout: tiled
       panes:
