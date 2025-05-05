@@ -70,7 +70,7 @@ windows:
       layout: tiled
       panes:
         - waitForSimulation; roslaunch mrs_uav_autostart automatic_start.launch
-        - 'waitForControlNoOdom;
+        - 'rosrun monospheres customWaitForControl.py;
           sleep 2;
           rosservice call /$UAV_NAME/mavros/cmd/arming 1;
           sleep 2;
@@ -78,7 +78,7 @@ windows:
   - rviz:
       layout: tiled
       panes:
-        - waitForControlNoOdom; roslaunch monospheres rviz.launch
+        - rosrun monospheres customWaitForControl.py; roslaunch monospheres rviz.launch
   - easy_control:
       layout: tiled
       panes:

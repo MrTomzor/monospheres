@@ -34,7 +34,7 @@ windows:
   - navigation:
       layout: tiled
       panes:
-        - waitForOffboard; sleep 15; roslaunch monospheres mrs_openvins_explore.launch custom_config:=./custom_configs/exploration_area_config.yaml
+        - waitForTakeoff; roslaunch monospheres mrs_openvins_explore.launch custom_config:=./custom_configs/exploration_area_config.yaml
   - octomap_pcl_retransform:
       layout: tiled
       panes:
@@ -42,11 +42,12 @@ windows:
   - exploration_start:
       layout: tiled
       panes:
-        - waitForOffboard; sleep 22; rosservice call /navigation/setstate_exploring
+        - waitForTakeoff; sleep 7; rosservice call /navigation/setstate_exploring
   - start_maneuver:
       layout: tiled
       panes:
-        - waitForOffboard; sleep 22; rosrun monospheres goforward5m.sh
+        # - waitForOffboard; sleep 22; rosrun monospheres goforward5m.sh
+        - waitForTakeoff; sleep 4; rosrun monospheres goforward5m.sh
   - VINS:
       layout: tiled
       panes:

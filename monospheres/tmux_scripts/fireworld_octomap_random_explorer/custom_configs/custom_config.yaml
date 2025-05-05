@@ -21,7 +21,7 @@ mrs_uav_managers:
   uav_manager:
 
     takeoff:
-      takeoff_height: 2
+      takeoff_height: 3
 
       during_takeoff:
         controller: "MpcController"
