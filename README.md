@@ -1,7 +1,8 @@
-## MonoSpheres Videos
+# MonoSpheres
+## Experiment Videos
 Videos from 2 real-world runs using MonoSpheres and runs in the simulated indoor and outdoor environments using both monospheres and the baseline grid-based mapping and exploration method are available in experiment_videos.mp4. 
 
-## Running the Examples
+## Running the MonoSpheres Examples
 This directory containins code for the Monospheres mapping and exploration pipeline, along with a custom version of the OpenVINS package modified for compatibility with the MRS system.
 To run the MonoSpheres method example, run `monospheres/tmux_scripts/fireworld_monospheres/tmux.sh`. To run the OctoMap mapper and random explorer approach used as baseline in the paper, run `monospheres/tmux_scripts/fireworld_monospheres/tmux.sh`. The cave world is currently unavailable in this file submission, as the textures and models are too large to fit into the RA-L 50MB submission size along with the video, but all of the functionality can be seen in the fireworld environment which uses native Gazebo assets.
 
