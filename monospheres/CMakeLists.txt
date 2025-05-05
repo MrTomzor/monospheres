@@ -162,6 +162,7 @@ include_directories(
 catkin_install_python(PROGRAMS
   # scripts/my_python_script
   scripts/ov_extension.py
+  scripts/customWaitForControl.py
   scripts/process_volume_and_goals_from_markers.py
   scripts/draw_exploration_progress_graph.py
   scripts/pointcloud_transformer.py
