@@ -47,7 +47,7 @@ input=(
 '
   'OpenVins' 'waitForHw; roslaunch mrs_open_vins_core realworld_bluefox_front.launch
 '
-  'Navigation' 'waitForControl; roslaunch spatial_ai mrs_openvins_explore_real.launch
+  'Navigation' 'waitForControl; roslaunch monospheres mrs_openvins_explore_real.launch
 '
   'StartExploring' 'rosservice call /navigation/setstate_exploring'
   'Ouster' 'waitForHw; roslaunch ouster_ros uav.launch

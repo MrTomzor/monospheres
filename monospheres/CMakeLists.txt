@@ -161,14 +161,7 @@ include_directories(
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
   # scripts/my_python_script
-  scripts/optical_flow_node.py
-  scripts/mono_vo_based_node.py
   scripts/ov_extension.py
-  scripts/body_slam.py
-  scripts/imu_odom_node.py
-  scripts/odom_node.py
-  scripts/tracking_node.py
-  scripts/mrs_path_follower.py
   scripts/process_volume_and_goals_from_markers.py
   scripts/draw_exploration_progress_graph.py
   scripts/pointcloud_transformer.py

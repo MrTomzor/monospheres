@@ -12,26 +12,11 @@ windows:
   - rosbag:
       layout: tiled
       panes:
-        # - waitForOffboard; ./record_only_exploration.sh
         - waitForOffboard; ../record_exploration_and_camera.sh
   - gazebo:
       layout: tiled
       panes:
-        # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_name:=forest gui:=true
-        # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_name:=grass_plane gui:=true
-        # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/schoolworld.sdf gui:=true
-        # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/flood3.sdf gui:=true
-        # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/sparse_world.sdf gui:=true
-        # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/wide_world1.sdf gui:=true
-        # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/garage2.sdf gui:=true
-        # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/crane_world7.sdf gui:=true
-        # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/brokencranes2.sdf gui:=true
-        # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/fireworld1.sdf gui:=true
-        # - waitForRos; export GAZEBO_MODEL_PATH=/home/tom/unity_robotics_ws/src/; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/widecave2.world gui:=true
-        # - waitForRos; export GAZEBO_MODEL_PATH=/home/tom/unity_robotics_ws/src/; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/doublecave4.sdf gui:=true
-        # - waitForRos; export GAZEBO_MODEL_PATH=/home/tom/unity_robotics_ws/src/; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/cave_trees.sdf gui:=true
-        - waitForRos; export GAZEBO_MODEL_PATH=/home/tom/unity_robotics_ws/src/; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/lushcave_morelights.sdf gui:=true
-        # - waitForRos; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find spatial_ai`/worlds/towers.sdf gui:=true
+        - waitForRos; export GAZEBO_MODEL_PATH=/home/tom/unity_robotics_ws/src/; roslaunch mrs_uav_gazebo_simulation simulation.launch world_file:=`rospack find monospheres`/worlds/lushcave_morelights.sdf gui:=true
         - waitForOdometry; gz camera -c gzclient_camera -f uav1; history -s gz camera -c gzclient_camera -f uav1
 
   - hw_api:
@@ -45,24 +30,22 @@ windows:
   - navigation:
       layout: tiled
       panes:
-        # - waitForOdometry; rosrun spatial_ai ov_extension.py
-        - waitForOffboard; sleep 15; roslaunch spatial_ai mrs_openvins_explore.launch custom_config:=./custom_configs/exploration_area_config.yaml
-        # - waitForOffboard; roslaunch spatial_ai random_octomap_explorer.launch custom_config:=./custom_configs/exploration_area_config.yaml
+        - waitForOffboard; sleep 15; roslaunch monospheres mrs_openvins_explore.launch custom_config:=./custom_configs/exploration_area_config.yaml
   - octomap_pcl_retransform:
       layout: tiled
       panes:
-        # - waitForOdometry; rosrun spatial_ai ov_extension.py
-        - waitForHw; rosrun spatial_ai pointcloud_transformer.py
+        # - waitForOdometry; rosrun monospheres ov_extension.py
+        - waitForHw; rosrun monospheres pointcloud_transformer.py
   - exploration_start:
       layout: tiled
       panes:
-        # - waitForOdometry; rosrun spatial_ai ov_extension.py
+        # - waitForOdometry; rosrun monospheres ov_extension.py
         - waitForOffboard; sleep 22; rosservice call /navigation/setstate_exploring
   - start_maneuver:
       layout: tiled
       panes:
-        # - waitForOffboard; sleep 22; rosrun spatial_ai cave_start_maneuver.sh
-        - waitForOffboard; sleep 22; rosrun spatial_ai goforward5m.sh
+        # - waitForOffboard; sleep 22; rosrun monospheres cave_start_maneuver.sh
+        - waitForOffboard; sleep 22; rosrun monospheres goforward5m.sh
   - VINS:
       layout: tiled
       panes:
@@ -100,7 +83,7 @@ windows:
   - rviz:
       layout: tiled
       panes:
-        - waitForControlNoOdom; roslaunch spatial_ai rviz.launch
+        - waitForControlNoOdom; roslaunch monospheres rviz.launch
         # - waitForControlNoOdom; roslaunch mrs_uav_core rviz.launch
         # - waitForControlNoOdom; roslaunch mrs_rviz_plugins load_robot.launch
         # - waitForControlNoOdom; roslaunch mrs_rviz_plugins rviz_interface.launch
