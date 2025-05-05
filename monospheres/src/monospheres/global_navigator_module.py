@@ -11,7 +11,7 @@ import heapq
 
 import rospkg
 
-from spatial_ai.common_spatial import *
+from monospheres.common_spatial import *
 
 from sensor_msgs.msg import Image, CompressedImage, PointCloud2
 import sensor_msgs.point_cloud2 as pc2

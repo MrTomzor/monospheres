@@ -42,7 +42,7 @@ import numpy as np
 
 import sys
 
-from spatial_ai.common_spatial import *
+from monospheres.common_spatial import *
 # # #}
 
 

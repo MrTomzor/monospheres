@@ -12,11 +12,11 @@ import heapq
 
 import rospkg
 
-from spatial_ai.common_spatial import *
-from spatial_ai.fire_slam_module import *
-from spatial_ai.submap_builder_module import *
-from spatial_ai.local_navigator_module import *
-from spatial_ai.global_navigator_module import *
+from monospheres.common_spatial import *
+from monospheres.fire_slam_module import *
+from monospheres.submap_builder_module import *
+from monospheres.local_navigator_module import *
+from monospheres.global_navigator_module import *
 
 from sensor_msgs.msg import Image, CompressedImage, PointCloud2, CameraInfo
 import sensor_msgs.point_cloud2 as pc2
