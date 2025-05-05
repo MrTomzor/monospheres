@@ -26,7 +26,7 @@ windows:
   - status:
       layout: tiled
       panes:
-        - waitForSimulation; roslaunch mrs_uav_status status.launch
+        - waitForGazebo; roslaunch mrs_uav_status status.launch
   - navigation:
       layout: tiled
       panes:
@@ -44,19 +44,20 @@ windows:
   - exploration_start:
       layout: tiled
       panes:
-        - waitForOffboard; sleep 22; rosservice call /navigation/setstate_exploring
+        - waitForTakeoff; sleep 7; rosservice call /navigation/setstate_exploring
   - start_maneuver:
       layout: tiled
       panes:
-        - waitForOffboard; sleep 22; rosrun monospheres goforward5m.sh
+        # - waitForOffboard; sleep 22; rosrun monospheres goforward5m.sh
+        - waitForTakeoff; sleep 4; rosrun monospheres goforward5m.sh
   - VINS:
       layout: tiled
       panes:
-        -  waitForOdometry; roslaunch ov_repub simulation_bluefox2.launch
+        -  waitForHw; roslaunch ov_repub simulation_bluefox2.launch
   - VINS_republisher:
       layout: tiled
       panes:
-        -  waitForOdometry; roslaunch vins_republisher2 vins_republisher_openvins_bluefox.launch
+        -  waitForHw; roslaunch vins_republisher2 vins_republisher_openvins_bluefox.launch
   - change_odom_source:
       layout: tiled
       panes:
@@ -64,15 +65,16 @@ windows:
   - spawn:
       layout: tiled
       panes:
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-vio --pos 0 2 3 1.57"
+        - waitForGazebo; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-vio --pos 0 2 3 1.57"
   - control:
       layout: tiled
       panes:
-        - waitForOdometry; roslaunch mrs_uav_core core.launch custom_config:=./custom_configs/custom_config.yaml world_config:=./custom_configs/world_config.yaml platform_config:=`rospack find mrs_uav_gazebo_simulation`/config/mrs_uav_system/$UAV_TYPE.yaml network_config:=./custom_configs/network_config.yaml
+        - waitForHw; roslaunch mrs_uav_core core.launch custom_config:=./custom_configs/custom_config.yaml world_config:=./custom_configs/world_config.yaml platform_config:=`rospack find mrs_uav_gazebo_simulation`/config/mrs_uav_system/$UAV_TYPE.yaml network_config:=./custom_configs/network_config.yaml
   - takeoff:
       layout: tiled
       panes:
-        - waitForSimulation; roslaunch mrs_uav_autostart automatic_start.launch
+        # - waitForGazebo; roslaunch mrs_uav_general automatic_start.launch
+        - waitForGazebo; roslaunch mrs_uav_autostart automatic_start.launch
         - 'rosrun monospheres customWaitForControl.py;
           sleep 2;
           rosservice call /$UAV_NAME/mavros/cmd/arming 1;

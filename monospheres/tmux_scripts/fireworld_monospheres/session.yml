@@ -25,7 +25,7 @@ windows:
   # - sim_slowdown:
   #     layout: tiled
   #     panes:
-  #       # - waitForSimulation; rosrun dynamic_reconfigure dynparam set gazebo max_update_rate 50 # realtime 0.2
+  #       # - waitForGazebo; rosrun dynamic_reconfigure dynparam set gazebo max_update_rate 50 # realtime 0.2
   - hw_api:
       layout: tiled
       panes:
@@ -33,7 +33,7 @@ windows:
   - status:
       layout: tiled
       panes:
-        - waitForSimulation; roslaunch mrs_uav_status status.launch
+        - waitForGazebo; roslaunch mrs_uav_status status.launch
   - navigation:
       layout: tiled
       panes:
@@ -66,7 +66,7 @@ windows:
   - spawn:
       layout: tiled
       panes:
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-vio --pos 0 2 3 1.57"
+        - waitForGazebo; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-vio --pos 0 2 3 1.57"
   - control:
       layout: tiled
       panes:
@@ -74,8 +74,8 @@ windows:
   - takeoff:
       layout: tiled
       panes:
-        # - waitForSimulation; roslaunch mrs_uav_general automatic_start.launch
-        - waitForSimulation; roslaunch mrs_uav_autostart automatic_start.launch
+        # - waitForGazebo; roslaunch mrs_uav_general automatic_start.launch
+        - waitForGazebo; sleep 1; roslaunch mrs_uav_autostart automatic_start.launch
         - 'rosrun monospheres customWaitForControl.py;
           sleep 2;
           rosservice call /$UAV_NAME/mavros/cmd/arming 1;
