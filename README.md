@@ -1,6 +1,6 @@
 # MonoSpheres
 ## Experiment Videos
-Videos from 2 real-world runs using MonoSpheres and runs in the simulated indoor and outdoor environments using both monospheres and the baseline grid-based mapping and exploration method are available in experiment_videos.mp4. 
+Videos from 2 real-world runs using MonoSpheres and runs in the simulated indoor and outdoor environments using both Monospheres and the baseline grid-based mapping and exploration method are available in experiment_videos.mp4. 
 
 ## Running the MonoSpheres Examples
 This directory containins code for the Monospheres mapping and exploration pipeline, along with a custom version of the OpenVINS package modified for compatibility with the MRS system.
